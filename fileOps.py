@@ -5,7 +5,7 @@
 # to single specified path directory.  
 
 
-import os, shutil
+import os, shutil, sys
 
 
 def copy_file(pathFrom, pathTo):
@@ -27,17 +27,25 @@ def traverse(full_path_root):
        
 def main():
     #ENTER DIRECTORY PATH ORIGIN/DESTINATION HERE (WHERE YOU WANT THE FILES)
-    #origin is optional, default is position of script file 
+    #origin is optional, default is position of script file
     specified_origin = ''
-    destination = 'C:\\Users\\Xavier\\Desktop\\HERE'
+    destination = ''
 
-    if (specified_origin == ''):
-        start_path = os.getcwd()
-    else:
-        start_path = specified_origin
+
+
+    start = input("Confirm origin/destination paths (y/n)?")
+    if (start == 'Y' or start == 'y'):
+        if (specified_origin == ''):
+            start_path = os.getcwd()
+        else:
+            start_path = specified_origin
     
-    print ("Starting in " + start_path)
-    traverse(start_path)
+        print ("Starting in " + start_path)
+        traverse(start_path)
+    else:
+        print ("Please check paths are correct in src file.")
+        
+   
     
             
     
